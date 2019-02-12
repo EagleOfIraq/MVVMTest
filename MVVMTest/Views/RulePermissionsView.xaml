@@ -1,0 +1,65 @@
+﻿<Window x:Class="MVVMTest.Views.RulePermissionsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMTest.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cal="http://www.caliburnproject.org"
+        mc:Ignorable="d"
+        Title="RulePermissionsView" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <ComboBox IsEditable="True"
+                          ItemsSource="{Binding ComboItems}"
+                          Text="{Binding ComboText,Mode=OneWayToSource}">
+                <ComboBox.Triggers>
+                    <EventTrigger RoutedEvent="TextBoxBase.TextChanged">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsDropDownOpen">
+                                    <DiscreteBooleanKeyFrame Value="True"
+                                                                 KeyTime="0:0:0" />
+                                </BooleanAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </ComboBox.Triggers>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="DropDownClosed">
+                        <cal:ActionMessage MethodName="changePermission" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+            <Button>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <cal:ActionMessage MethodName="addPermission" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                Add Permission
+            </Button>
+            <Button>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <cal:ActionMessage MethodName="removePermission" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                Delete Permission
+            </Button>
+
+            <Button>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <cal:ActionMessage MethodName="setPermissions" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+               save
+            </Button>
+            <DataGrid
+                    SelectedItem="{Binding Permission}"
+                    ItemsSource="{Binding Rule.Permissions}">
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>
