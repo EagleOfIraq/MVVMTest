@@ -1,4 +1,4 @@
-﻿<Window x:Class="MVVMTest.Views.RuleView"
+﻿<UserControl x:Class="MVVMTest.Views.RuleView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,8 +7,8 @@
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="RuleView" Height="800" Width="800">
-    <Grid>
+         Height="800" Width="800">
+    <Grid Background="Aqua">
         <StackPanel>
             <TextBox>
                 <TextBox.Text>
@@ -39,7 +39,7 @@
                 </i:Interaction.Triggers>
                 Delete
             </Button>
-           
+
             <DataGrid
                 SelectedItem="{Binding Rule}"
                 SelectionMode="Single" Name="Rules"
@@ -47,21 +47,21 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Rule Name" Binding="{Binding Path=RuleName}" />
                     <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button>
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Click">
-                                        <cal:ActionMessage MethodName="editRulePermissions" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                                editRulePermissions
-                            </Button>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="editRulePermissions" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    editRulePermissions
+                                </Button>
                             </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
     </Grid>
-</Window>
+</UserControl>

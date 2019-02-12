@@ -18,6 +18,7 @@ namespace MVVMTest.Models
         public List<TblUser> Users { get; set; }
         public List<TblPermission> Permissions { get; set; } = new List<TblPermission>();
 
+
         public TblRule save()
         {
             using (var db = new MyDbContext())
@@ -44,7 +45,8 @@ namespace MVVMTest.Models
                 {
                     //                    var r = db.Rules.SingleOrDefault(x => x.Id == this.Id);
                     //                    r.Permissions = this.Permissions;
-                    db.Rules.AddOrUpdate(this);
+                    //                    db.Rules.AddOrUpdate(this);
+                    db.Entry(this).State = EntityState.Modified;
                     db.SaveChanges();
                     return this;
                 }

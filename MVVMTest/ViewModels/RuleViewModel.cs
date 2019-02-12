@@ -12,10 +12,7 @@ using MVVMTest.Models;
 namespace MVVMTest.ViewModels
 {
     class RuleViewModel : Screen, PermissionsSetListener
-    {
-
-
-
+    {         
         private BindableCollection<TblRule> rules = new BindableCollection<TblRule>(TblRule.getAll());
 
         private TblRule rule = new TblRule();

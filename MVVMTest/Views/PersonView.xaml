@@ -1,4 +1,4 @@
-<Window x:Class="MVVMTest.Views.PersonView"
+<UserControl x:Class="MVVMTest.Views.PersonView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,8 +7,8 @@
         xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
         xmlns:validators="clr-namespace:MyValidators"
-        Title="PersonView" Height="450" Width="800">
-    <Grid>
+        Height="450" Width="800">
+    <Grid Background="Blue">
         <Grid.RowDefinitions>
 
         </Grid.RowDefinitions>
@@ -66,4 +66,4 @@
         </StackPanel>
     </Grid>
 
-</Window>
+</UserControl>

@@ -10,23 +10,30 @@
         Title="ShellView" Height="450" Width="800">
     <Grid Margin="20">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="54*"/>
-            <ColumnDefinition Width="55*"/>
+          
         </Grid.ColumnDefinitions>
 
-        <Button Content="Click Me" Height="50" Width="100" >
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                    <cal:ActionMessage MethodName="SayHello" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Button>
-        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="30,151,0,0" VerticalAlignment="Top" Width="105" Height="66">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                    <cal:ActionMessage MethodName="OpenTest" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Button>
+        <StackPanel Background="DarkCyan" >
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Click Me" Height="30" Width="100">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <cal:ActionMessage MethodName="SayHello" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button Content="Button" Width="105" Height="30">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <cal:ActionMessage MethodName="OpenTest" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
+            <ContentControl Name="ActiveItem">
+
+            </ContentControl>
+
+        </StackPanel>
     </Grid>
 </Window>

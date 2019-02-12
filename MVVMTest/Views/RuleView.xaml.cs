@@ -17,11 +17,8 @@ namespace MVVMTest.Views
     /// <summary>
     /// Interaction logic for RuleView.xaml
     /// </summary>
-    public partial class RuleView : Window
+    public partial class RuleView 
     {
-        public RuleView()
-        {
-            InitializeComponent();
-        }
+       
     }
 }

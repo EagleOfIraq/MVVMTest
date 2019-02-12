@@ -6,7 +6,7 @@ using Caliburn.Micro;
 
 namespace MVVMTest.ViewModels
 {
-    public class ShellViewModel : Screen, DataChangeListener
+    public class ShellViewModel : Conductor<object>, DataChangeListener
     {
         private string _name = "hi";
         readonly IWindowManager manager = new WindowManager();
@@ -46,13 +46,15 @@ namespace MVVMTest.ViewModels
                 DataChangeListener = this
             };
             addMainDataChangeListener(personViewModel);
-            manager.ShowWindow(personViewModel);
+            ActivateItem(personViewModel);
+//            manager.ShowWindow(personViewModel);
         }
 
         public void OpenTest()
         {
+            ActivateItem(new RuleViewModel());
 //            manager.ShowWindow(new UserViewModel());
-            manager.ShowWindow(new RuleViewModel());
+//            manager.ShowWindow(new RuleViewModel());
 //            manager.ShowWindow(new PermissionViewModel());
           
         }
