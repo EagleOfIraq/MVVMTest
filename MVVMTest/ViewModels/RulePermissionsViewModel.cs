@@ -22,7 +22,7 @@ namespace MVVMTest.ViewModels
         {
             this.PermissionsSetListener = PermissionsSetListener;
             Rule = rule;
-            permissions = Rule.Permissions;
+            Permissions = Rule.Permissions;
             var myItems = new List<string>();
             foreach (var permission in TblPermission.getAll())
             {

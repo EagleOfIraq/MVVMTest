@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
@@ -43,17 +44,31 @@ namespace MVVMTest.Models
             {
                 try
                 {
+                    if (this.Permissions != null)
+                    {
+                        db.Database.ExecuteSqlCommand("DELETE FROM TblRuleTblPermissions WHERE TblRule_Id=" + this.Id);
+                        db.SaveChanges();
+                    }
+
+                    foreach (var Permission in this.Permissions)
+                    {
+                        var q = "INSERT INTO TblRuleTblPermissions  (TblRule_Id ,TblPermission_Id) VALUES(@TblRule_Id,@TblPermission_Id)";
+                        db.Database.ExecuteSqlCommand(q,
+                            new SqlParameter("@TblRule_Id", this.Id),
+                            new SqlParameter("@TblPermission_Id", Permission.Id)
+                         );
+                        db.SaveChanges();
+                    }
                     //                    var r = db.Rules.SingleOrDefault(x => x.Id == this.Id);
                     //                    r.Permissions = this.Permissions;
                     //                    db.Rules.AddOrUpdate(this);
-                    db.Entry(this).State = EntityState.Modified;
-                    db.SaveChanges();
+                    //                    db.Entry(this).State = EntityState.Modified;
                     return this;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-                    return null;
+//                    MessageBox.Show(ex.Message);
+                    return this;
                 }
             }
         }

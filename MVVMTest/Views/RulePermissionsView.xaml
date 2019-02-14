@@ -58,7 +58,7 @@
             </Button>
             <DataGrid
                     SelectedItem="{Binding Permission}"
-                    ItemsSource="{Binding Rule.Permissions}">
+                    ItemsSource="{Binding Permissions}">
             </DataGrid>
         </StackPanel>
     </Grid>
